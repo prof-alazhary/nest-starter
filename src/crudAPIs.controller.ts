@@ -1,25 +1,27 @@
 import { Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import { CrudAPIsService } from './crudAPIs.service';
 
 @Controller('api')
 export class CrudAPIsController {
+    constructor(private readonly crudAPIsService: CrudAPIsService) { }
 
     @Get('retrieve')
     getResource(): string {
-        return 'resource is retrieved!';
+        return this.crudAPIsService.getResource();
     }
 
     @Post('create')
     postResource(): string {
-        return 'resource is created!';
+        return this.crudAPIsService.postResource();
     }
 
     @Put('update')
     putResource(): string {
-        return 'resource is updated!';
+        return this.crudAPIsService.putResource();
     }
 
     @Delete('delete')
     deleteResource(): string {
-        return 'resource is deleted!';
+        return this.crudAPIsService.deleteResource();
     }
 }
